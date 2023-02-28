@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# Store App
+##### (REACTJS 18)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+➥ LOGIN 
 
-## Available Scripts
 
-In the project directory, you can run:
+![loginreact](https://user-images.githubusercontent.com/85956625/221985002-3cf0e934-f5a4-4631-9d70-f3653657fbbd.PNG)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+➥ REGISTER 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+![register](https://user-images.githubusercontent.com/85956625/221985085-8bd5e76e-9acc-42be-8405-89849848e580.PNG)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+➥ STORE HOMEPAGE
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![reactjs1](https://user-images.githubusercontent.com/85956625/221985117-701f46a2-3e70-43d0-880d-6c00c151c5ac.PNG)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+➥ CATEGORY USER PAGE 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![reactjs2](https://user-images.githubusercontent.com/85956625/221985297-bfc6c64a-62a3-4c3b-ab71-154ecc503eaf.PNG)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+➥ PRODUCT ADMİN PAGE 
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![reactjsCRUD](https://user-images.githubusercontent.com/85956625/221985222-fd1b1144-0b33-48a4-9d12-71dc4e18405f.PNG)
