@@ -37,28 +37,13 @@ namespace StoreApi.Controllers
 
 
 
-        [HttpPut]
-        [Route("UpdateProduct")]
-        public async Task<ActionResult<List<Product>>> UpdateProduct(Product request)
+         [HttpPatch]
+        [Route("UpdateProduct/{id}")]
+        public async Task<Product> UpdateProduct(Product objProduct)
         {
-            var dbpro = await _dataContext.Products.FindAsync(request.ProductId);
-            if (dbpro == null)
-                return BadRequest("Hero not found.");
-
-            dbpro.Name = request.Name;
-            dbpro.Description = request.Description;
-            dbpro.Price = request.Price;
-            dbpro.IsApproved = request.IsApproved;
-            dbpro.Status = request.Status;
-            dbpro.CreatedDate = request.CreatedDate;
-            dbpro.UpdatedDate = request.UpdatedDate;
-            dbpro.Category_Id = request.Category_Id;
-            dbpro.CreateUserId = request.CreateUserId;
-            dbpro.UpdateUserId = request.UpdateUserId;
-
+            _dataContext.Entry(objProduct).State = EntityState.Modified;
             await _dataContext.SaveChangesAsync();
-
-            return Ok(request);
+            return objProduct;
         }
 
         [HttpDelete]
