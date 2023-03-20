@@ -35,28 +35,14 @@ namespace StoreApi.Controllers
             return Ok(category);
         }
 
-        [HttpPut]
-        [Route("UpdateCategory")]
-        public async Task<ActionResult<List<Category>>> UpdateCategory(Category request)
+         [HttpPatch]
+        [Route("UpdateCategory/{id}")]
+        public async Task<Category> UpdateCategory(Category objCategory)
         {
-            var dbCat = await _dataContext.Categorys.FindAsync(request.CategoryId);
-            if (dbCat == null)
-                return BadRequest("Category not found.");
-
-            
-            dbCat.Name = request.Name;
-            dbCat.Description = request.Description;
-            dbCat.Status = request.Status;
-            dbCat.CreatedDate = request.CreatedDate;
-            dbCat.UpdatedDate = request.UpdatedDate;
-            dbCat.CreateUserId = request.CreateUserId;
-            dbCat.UpdateUserId = request.UpdateUserId;
-
+            _dataContext.Entry(objCategory).State = EntityState.Modified;
             await _dataContext.SaveChangesAsync();
-
-            return Ok(request);
+            return objCategory;
         }
-
         [HttpDelete]
         [Route("DeleteCategory/{id}")]
         public async Task<ActionResult<List<Category>>> Delete(int id)
