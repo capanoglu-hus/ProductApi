@@ -37,25 +37,13 @@ namespace StoreApi.Controllers
             return Ok(stock);
         }
 
-        [HttpPut]
-        [Route("UpdateStock")]
-        public async Task<ActionResult<List<Stock>>> UpdateStock(Stock request)
+        [HttpPatch]
+        [Route("UpdateStock/{id}")]
+        public async Task<Stock> UpdateStock(Stock objStock)
         {
-            var dbStock = await _dataContext.Stocks.FindAsync(request.StockId);
-            if (dbStock == null)
-                return BadRequest("Stock not found.");
-
-            dbStock.Product_id = request.Product_id;
-            dbStock.CreateUserId = request.CreateUserId;
-            dbStock.UpdateUserId = request.UpdateUserId;
-            dbStock.Quantity = request.Quantity;
-            dbStock.Status = request.Status;
-            dbStock.CreatedDate = request.CreatedDate;
-            dbStock.UpdatedDate = request.UpdatedDate;
-
+            _dataContext.Entry(objStock).State = EntityState.Modified;
             await _dataContext.SaveChangesAsync();
-
-            return Ok(request);
+            return objStock;
         }
         [HttpDelete]
         [Route("DeleteStock/{id}")]
