@@ -39,7 +39,7 @@ function CategoryCRUD() {
 
       await axios.post("https://localhost:7264/api/Category/AddCategory", {
 
-        categoryId: categoryId,
+      
         name: name,
         description: description,
         status: status,
@@ -49,7 +49,7 @@ function CategoryCRUD() {
         updatedDate: updatedDate
       });
       alert("Category Registation Successfully");
-      setCategoryId("");
+    
       setName("");
       setDescription("");
 
