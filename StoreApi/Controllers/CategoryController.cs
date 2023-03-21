@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StoreApi.Data;
+using StoreApi.Model;
 
 namespace StoreApi.Controllers
 {
@@ -9,6 +10,7 @@ namespace StoreApi.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
+        public static CategoryModel category = new CategoryModel();
         private readonly DataContext _dataContext;
 
         public CategoryController(DataContext dataContext)
@@ -23,19 +25,27 @@ namespace StoreApi.Controllers
             return Ok(await _dataContext.Categorys.ToListAsync());
         }
 
-       
 
         [HttpPost]
         [Route("AddCategory")]
-        public async Task<ActionResult<IEnumerable<List<Category>>>> AddCategory(Category category)
+        public async Task<CategoryModel> AddCategory(Category request)
         {
-            _dataContext.Categorys.Add(category);
-            await _dataContext.SaveChangesAsync();
+            category.Name = request.Name;
+            category.Description = request.Description;
+           
+            category.Status = request.Status;
+            category.CreatedDate = request.CreatedDate;
+            category.UpdatedDate = request.UpdatedDate;
+            category.CreateUserId = request.CreateUserId;
+            category.UpdateUserId = request.UpdateUserId;
+            
 
-            return Ok(category);
+            _dataContext.Categorys.Add(request);
+            await _dataContext.SaveChangesAsync();
+            return category;
         }
 
-         [HttpPatch]
+        [HttpPatch]
         [Route("UpdateCategory/{id}")]
         public async Task<Category> UpdateCategory(Category objCategory)
         {
@@ -43,6 +53,7 @@ namespace StoreApi.Controllers
             await _dataContext.SaveChangesAsync();
             return objCategory;
         }
+
         [HttpDelete]
         [Route("DeleteCategory/{id}")]
         public async Task<ActionResult<List<Category>>> Delete(int id)
@@ -58,3 +69,4 @@ namespace StoreApi.Controllers
         }
     }
 }
+
