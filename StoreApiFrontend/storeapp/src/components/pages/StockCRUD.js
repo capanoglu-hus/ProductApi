@@ -37,7 +37,7 @@ function StockCRUD() {
      
       await axios.post("https://localhost:7264/api/Stock/AddStock", {
         
-        stockId: stockId,
+        
         product_id :product_id,
         status: status,
         quantity : quantity,
@@ -47,7 +47,7 @@ function StockCRUD() {
         updatedDate: updatedDate
       });
       alert("Stock Registation Successfully");
-      setStockId("");
+     
       setProduct_id("");
       setQuantity("");
    
