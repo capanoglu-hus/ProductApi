@@ -27,8 +27,12 @@
 
 ➥ REGISTER PAGE 
 
+![registerrrr](https://user-images.githubusercontent.com/85956625/226591078-a9193ea4-185c-4700-ac31-06038ba649b4.PNG)
 
-![register](https://user-images.githubusercontent.com/85956625/221985085-8bd5e76e-9acc-42be-8405-89849848e580.PNG)
+
+*User Table Database*
+
+![registerdb](https://user-images.githubusercontent.com/85956625/226591093-1a7e0617-2725-418a-bdac-bb0f983585dc.PNG)
 
 
 ➥ STORE HOMEPAGE
@@ -49,10 +53,13 @@
 ![catgeoryadmin](https://user-images.githubusercontent.com/85956625/224957462-87828ac3-5a25-4536-9513-692dfd84ae71.PNG)
 
 
-➥ CATEGORY ADD ADMİN PAGE 
+➥ PRODUCT ADD ADMİN PAGE 
 
+![ıdolmadanproductadd](https://user-images.githubusercontent.com/85956625/226591306-549761fe-2c6d-475e-9d5f-5eeb71c9bf33.PNG)
 
-![categoryadd](https://user-images.githubusercontent.com/85956625/224957454-20ceb823-8857-4f81-8335-8c712beadec7.PNG)
+*Product Details* 
+![denemeeeeid](https://user-images.githubusercontent.com/85956625/226591322-7083dde3-00b0-44ae-8d3b-a14b3d1e28e4.PNG)
+
 
 
 ➥ CATEGORY DELETE ADMİN PAGE 
