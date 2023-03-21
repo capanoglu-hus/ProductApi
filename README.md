@@ -60,6 +60,9 @@
 *Product Details* 
 ![denemeeeeid](https://user-images.githubusercontent.com/85956625/226591322-7083dde3-00b0-44ae-8d3b-a14b3d1e28e4.PNG)
 
+➥ CATEGORY UPDATED ADMİN PAGE 
+
+![updateddd](https://user-images.githubusercontent.com/85956625/226596901-0162450c-cee6-472a-a218-50996665c961.PNG)
 
 
 ➥ CATEGORY DELETE ADMİN PAGE 
