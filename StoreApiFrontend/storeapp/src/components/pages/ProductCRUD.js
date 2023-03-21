@@ -37,7 +37,7 @@ function ProductCRUD() {
 
       await axios.post("https://localhost:7264/api/Product/AddProduct", {
 
-        ProductId: productId,
+       
         Name: name,
         Description: description,
         Price: price,
@@ -50,7 +50,7 @@ function ProductCRUD() {
         UpdatedDate: updatedDate
       });
       alert("product Registation Successfully");
-      setProductId("");
+    
       setName("");
       setDescription("");
       setPrice("");
