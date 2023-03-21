@@ -34,8 +34,7 @@ namespace StoreApi.Controllers
         {
             CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
-            user.UserId = request.UserId;
-           
+          
             user.UserName = request.UserName;
             user.Name = request.UserName;
             user.Email = request.Email;  
