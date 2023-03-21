@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StoreApi.Data;
+using StoreApi.Model;
 
 namespace StoreApi.Controllers
 {
@@ -9,6 +10,8 @@ namespace StoreApi.Controllers
     [ApiController]
     public class StockController : ControllerBase
     {
+
+        public static StockModel stock = new StockModel();
         private readonly DataContext _dataContext;
 
         public StockController(DataContext dataContext)
@@ -16,6 +19,7 @@ namespace StoreApi.Controllers
             _dataContext = dataContext;
         }
 
+       
         [HttpGet]
         [Route("GetStock")]
         public async Task<ActionResult<List<Stock>>> GetStock()
@@ -23,18 +27,27 @@ namespace StoreApi.Controllers
             return Ok(await _dataContext.Stocks.ToListAsync());
         }
 
-        
+
 
 
 
         [HttpPost]
-        [Route("AddStock")]
-        public async Task<ActionResult<IEnumerable<List<Stock>>>> AddStock(Stock stock)
+        [Route("AddStock")] 
+        public async Task<StockModel> AddStock(Stock request)
         {
-            _dataContext.Stocks.Add(stock);
-            await _dataContext.SaveChangesAsync();
+            stock.Product_id = request.Product_id;
+            stock.Quantity = request.Quantity;
 
-            return Ok(stock);
+            stock.Status = request.Status;
+            stock.CreatedDate = request.CreatedDate;
+            stock.UpdatedDate = request.UpdatedDate;
+            stock.CreateUserId = request.CreateUserId;
+            stock.UpdateUserId = request.UpdateUserId;
+
+
+            _dataContext.Stocks.Add(request);
+            await _dataContext.SaveChangesAsync();
+            return stock;
         }
 
         [HttpPatch]
@@ -45,6 +58,7 @@ namespace StoreApi.Controllers
             await _dataContext.SaveChangesAsync();
             return objStock;
         }
+
         [HttpDelete]
         [Route("DeleteStock/{id}")]
         public async Task<ActionResult<List<Stock>>> DeleteStock(int id)
