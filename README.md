@@ -43,8 +43,8 @@
 
 ➥ STOCK USER PAGE 
 
+![stocknamedüzen](https://user-images.githubusercontent.com/85956625/227531600-92efe5cd-ba14-460b-9955-c5d3d9dff285.PNG)
 
-![stockuser](https://user-images.githubusercontent.com/85956625/224957350-58c637d0-590b-46e9-803f-298ba652c060.PNG)
 
 
 ➥ CATEGORY ADMİN PAGE 
