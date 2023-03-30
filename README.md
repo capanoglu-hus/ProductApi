@@ -19,10 +19,14 @@
 ![logintoken](https://user-images.githubusercontent.com/85956625/224961531-cfefe5c9-c63a-4f31-bcbf-4a6b5bc1b4f0.PNG)
 
 
+![paswsfsdf](https://user-images.githubusercontent.com/85956625/228803560-c4957f8c-79f5-4fc4-97d8-7bf0a24e9359.PNG)
+
+
 ➥ LOGIN PAGE
 
 
-![loginreact](https://user-images.githubusercontent.com/85956625/221985002-3cf0e934-f5a4-4631-9d70-f3653657fbbd.PNG)
+![login](https://user-images.githubusercontent.com/85956625/228805029-0f92518d-a8bd-48b9-a007-af3a0b4628e5.PNG)
+
 
 
 ➥ REGISTER PAGE 
@@ -56,9 +60,6 @@
 ➥ PRODUCT ADD ADMİN PAGE 
 
 ![ıdolmadanproductadd](https://user-images.githubusercontent.com/85956625/226591306-549761fe-2c6d-475e-9d5f-5eeb71c9bf33.PNG)
-
-*Product Details* 
-![denemeeeeid](https://user-images.githubusercontent.com/85956625/226591322-7083dde3-00b0-44ae-8d3b-a14b3d1e28e4.PNG)
 
 ➥ CATEGORY UPDATED ADMİN PAGE 
 
