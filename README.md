@@ -31,7 +31,8 @@
 
 ➥ REGISTER PAGE 
 
-![registerrrr](https://user-images.githubusercontent.com/85956625/226591078-a9193ea4-185c-4700-ac31-06038ba649b4.PNG)
+![register](https://user-images.githubusercontent.com/85956625/230242182-d75388d7-e875-4026-93a1-64edc54401af.PNG)
+
 
 
 *User Table Database*
@@ -42,7 +43,8 @@
 ➥ STORE HOMEPAGE
 
 
-![homepage](https://user-images.githubusercontent.com/85956625/224957189-4bdd9bc7-30fb-478e-b901-74a32a7ad326.PNG)
+![oturumm](https://user-images.githubusercontent.com/85956625/230242200-10b22caa-269a-4e37-8af0-415e855c2dc8.PNG)
+
 
 
 ➥ STOCK USER PAGE 
