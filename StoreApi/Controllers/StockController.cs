@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -71,11 +71,42 @@ namespace StoreApi.Controllers
 
         [HttpPatch]
         [Route("UpdateStock/{id}")]
-        public async Task<Stock> UpdateStock(Stock objStock)
+        public async Task<ActionResult<Stock>> UpdateStock(int id, Stock request)
         {
-            _dataContext.Entry(objStock).State = EntityState.Modified;
-            await _dataContext.SaveChangesAsync();
-            return objStock;
+            var stock = await _dataContext.Stocks.FindAsync(id);
+
+            if (stock == null)
+            {
+                return NotFound();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            stock.Product_id = request.Product_id;
+            stock.Quantity = request.Quantity;
+            stock.Status = request.Status;
+            stock.UpdatedDate = request.UpdatedDate;
+            stock.CreateUserId = request.CreateUserId;
+            stock.UpdateUserId = request.UpdateUserId;
+
+            _dataContext.Entry(stock).State = EntityState.Modified;
+
+            try
+            {
+                await _dataContext.SaveChangesAsync();
+
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                ModelState.AddModelError("", "Unable to save change. " +
+                        "Try Again, if you have problem persists, " +
+                        "Contact your system administrator");
+            }
+
+            return Ok(stock);
         }
 
         [HttpDelete]
