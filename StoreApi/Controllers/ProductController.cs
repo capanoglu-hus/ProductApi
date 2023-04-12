@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -72,11 +72,46 @@ namespace StoreApi.Controllers
 
         [HttpPatch]
         [Route("UpdateProduct/{id}")]
-        public async Task<Product> UpdateProduct(Product objProduct)
+        public async Task<ActionResult<Product>> UpdateProduct(int id, Product request)
         {
-            _dataContext.Entry(objProduct).State = EntityState.Modified;
-            await _dataContext.SaveChangesAsync();
-            return objProduct;
+            var product = await _dataContext.Products.FindAsync(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            product.Name = request.Name;
+            product.Description = request.Description;
+            product.Price = request.Price;
+            product.IsApproved = request.IsApproved;
+            product.Status = request.Status;
+          
+            product.UpdatedDate = request.UpdatedDate;
+            product.CreateUserId = request.CreateUserId;
+            product.UpdateUserId = request.UpdateUserId;
+            product.Category_Id = request.Category_Id;
+
+            _dataContext.Entry(product).State = EntityState.Modified;
+
+            try
+            {
+                await _dataContext.SaveChangesAsync();
+
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                ModelState.AddModelError("", "Unable to save change. " +
+                        "Try Again, if you have problem persists, " +
+                        "Contact your system administrator");
+            }
+
+            return Ok(product);
         }
 
         [HttpDelete]
