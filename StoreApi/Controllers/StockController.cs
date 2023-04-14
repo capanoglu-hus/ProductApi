@@ -89,7 +89,7 @@ namespace StoreApi.Controllers
             stock.Quantity = request.Quantity;
             stock.Status = request.Status;
             stock.UpdatedDate = request.UpdatedDate;
-            stock.CreateUserId = request.CreateUserId;
+           
             stock.UpdateUserId = request.UpdateUserId;
 
             _dataContext.Entry(stock).State = EntityState.Modified;
