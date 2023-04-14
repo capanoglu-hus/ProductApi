@@ -93,7 +93,7 @@ namespace StoreApi.Controllers
             product.Status = request.Status;
           
             product.UpdatedDate = request.UpdatedDate;
-            product.CreateUserId = request.CreateUserId;
+          
             product.UpdateUserId = request.UpdateUserId;
             product.Category_Id = request.Category_Id;
 
