@@ -91,14 +91,18 @@ namespace StoreApi.Controllers
 
          
 
-             string  token =   CreateToken(user);
+              var UserId = user.UserId;
+
+
+
+            string  token =   CreateToken(user);
 
             var  tokenjwt = new UserLoginModel
             {
+                usr = $"{UserId}",
                 tokenjwt = $"{token}" ,
                
             };
-
            
 
             return Ok(tokenjwt);
