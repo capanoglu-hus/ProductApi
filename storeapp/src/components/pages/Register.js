@@ -22,10 +22,24 @@ function Register() {
   useEffect(() => {
     (async () => await save())();
   }, []);
+  
+    const validate = () => {
+    let result = true;
+    if (email === '' || email === null) {
+        result = false;
+        alert('Please Enter Username');
+    }
+    if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+       result = false ;   
+      alert('Invalid email address');
+    }
+    return result;
+}
   async function save(event) {
 
 
     event.preventDefault();
+     if (validate()) {
     try {
 
       await axios.post("https://localhost:7264/api/User/Register", {
@@ -52,21 +66,7 @@ function Register() {
       alert(err);
     }
 
-    function isValidEmail(email) {
-      return /\S+@\S+\.\S+/.test(email);
-    }
-  
-    const setEmail = event => {
-      if (!isValidEmail(event.target.value)) {
-        setError('Email is invalid');
-      } else {
-        setError(null);
-      }
-  
-      setEmail(event.target.value);
-    };
-  
-      
+  }
 
 
 
