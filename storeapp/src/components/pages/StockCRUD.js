@@ -19,7 +19,7 @@ function StockCRUD() {
 
   let tokenjwt = sessionStorage.getItem('tokenjwt');
 
-
+let user = sessionStorage.getItem('UserId');
 
   const dataPost = {
 
@@ -205,17 +205,17 @@ function StockCRUD() {
           <Form.Group as={Col} >
             <Form.Label>UpdatedUserId</Form.Label>
             <Form.Control placeholder="UpdatedUserId" id="UpdatedUserId"
-              value={updateUserId}
+              value={user}
               onChange={(event) => {
-                setUpdateUserId(event.target.value);
+                setUpdateUserId(user);
               }} />
           </Form.Group>
           <Form.Group as={Col} >
             <Form.Label>CreatedUserId</Form.Label>
             <Form.Control placeholder="CreatedUserId" id="CreatedUserId"
-              value={createUserId}
+              value={user}
               onChange={(event) => {
-                setCreateUserId(event.target.value);
+                setCreateUserId(user);
               }} />
           </Form.Group>
 
