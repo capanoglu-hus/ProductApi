@@ -20,7 +20,7 @@ function CategoryCRUD() {
 
   let tokenjwt = sessionStorage.getItem('tokenjwt');
 
-  //let user = sessionStorage.getItem('UserId');
+  let user = sessionStorage.getItem('UserId');
 
   const dataPost = {
     name: name,
@@ -204,17 +204,17 @@ function CategoryCRUD() {
           <Form.Group as={Col} >
             <Form.Label>UpdateUserId</Form.Label>
             <Form.Control placeholder="UpdatedUserId" id="UpdatedUserId"
-              value={updateUserId}
+              value={user}
               onChange={(event) => {
-                setUpdateUserId(event.target.value);
+                setUpdateUserId(user);
               }} />
           </Form.Group>
           <Form.Group as={Col} >
             <Form.Label>CreateUserId</Form.Label>
             <Form.Control placeholder="CreatedUserId" id="CreatedUserId"
-              value={createUserId}
+              value={user}
               onChange={(event) => {
-                setCreateUserId(event.target.value);
+                setCreateUserId(user);
               }} />
           </Form.Group>
 
