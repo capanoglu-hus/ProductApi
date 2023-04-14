@@ -67,7 +67,7 @@ namespace StoreApi.Controllers
             category.Description = request.Description;
             category.Status = request.Status;
             category.UpdatedDate = request.UpdatedDate;
-            category.CreateUserId = request.CreateUserId;
+           
             category.UpdateUserId = request.UpdateUserId;
 
             _dataContext.Entry(category).State = EntityState.Modified;
