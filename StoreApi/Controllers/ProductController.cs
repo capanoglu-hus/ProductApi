@@ -46,7 +46,7 @@ namespace StoreApi.Controllers
             
             return Ok(result);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("AddProduct")]
         public async Task<ProductModel> AddProduct(Product request)
@@ -69,7 +69,7 @@ namespace StoreApi.Controllers
             return product;
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPatch]
         [Route("UpdateProduct/{id}")]
         public async Task<ActionResult<Product>> UpdateProduct(int id, Product request)
@@ -113,7 +113,7 @@ namespace StoreApi.Controllers
 
             return Ok(product);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("DeleteProduct/{id}")]
         public async Task<ActionResult<List<Product>>> Delete(int id)
