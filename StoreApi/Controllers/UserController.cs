@@ -112,10 +112,12 @@ namespace StoreApi.Controllers
 
         private string CreateToken(User user)
         {
+            var Role = user.role;
             List<Claim> claims = new List<Claim>
             {
 
-                new Claim(ClaimTypes.Name , user.UserName)
+                new Claim(ClaimTypes.Name , user.UserName),
+                new Claim(ClaimTypes.Role, $"{Role}")
 
             };
 
