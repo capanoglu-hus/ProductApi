@@ -49,7 +49,7 @@ namespace StoreApi.Controllers
 
 
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("AddStock")]
         public async Task<StockModel> AddStock(Stock request)
@@ -68,7 +68,7 @@ namespace StoreApi.Controllers
             await _dataContext.SaveChangesAsync();
             return stock;
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPatch]
         [Route("UpdateStock/{id}")]
         public async Task<ActionResult<Stock>> UpdateStock(int id, Stock request)
@@ -108,7 +108,7 @@ namespace StoreApi.Controllers
 
             return Ok(stock);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("DeleteStock/{id}")]
         public async Task<ActionResult<List<Stock>>> DeleteStock(int id)
