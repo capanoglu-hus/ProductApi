@@ -28,7 +28,7 @@ namespace StoreApi.Controllers
             return Ok(await _dataContext.Categorys.ToListAsync());
         }
 
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [Route("AddCategory")]
         public async Task<CategoryModel> AddCategory(Category request)
@@ -46,7 +46,7 @@ namespace StoreApi.Controllers
             await _dataContext.SaveChangesAsync();
             return category;
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPatch]
         [Route("UpdateCategory/{id}")]
         public async Task<ActionResult<Category>> UpdateCategory(int id, Category request)
@@ -86,7 +86,7 @@ namespace StoreApi.Controllers
 
             return Ok(category);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         [Route("DeleteCategory/{id}")]
         public async Task<ActionResult<List<Category>>> Delete(int id)
