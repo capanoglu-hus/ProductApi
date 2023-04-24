@@ -9,6 +9,7 @@ import StockCRUD from "./StockCRUD";
 import Product from "./Product";
 import Category from "./Category";
 import Stock from "./Stock";
+import MetaMask from "./MetaMask";
 
 export default function RouterPage() {
     return (
@@ -23,6 +24,7 @@ export default function RouterPage() {
                 <Route path="/ProductCRUD"><ProductCRUD /></Route>
                 <Route path="/CategoryCRUD"><CategoryCRUD /></Route>
                 <Route path="/StockCRUD"><StockCRUD /></Route>
+                <Route path="/MetaMask" component={MetaMask} />
                 </Switch>
         </Router>
     )
