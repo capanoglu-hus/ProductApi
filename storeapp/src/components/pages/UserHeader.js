@@ -63,6 +63,9 @@ export default function UserHeader() {
                             <li className="nav-item">
                                 <Link className="nav-link active" to="/Stock">Stock</Link>
                             </li>
+                             <li className="nav-item">
+                                <Link className="nav-link active" to="/MetaMask">MetaMask</Link>
+                            </li>
 
 
 
