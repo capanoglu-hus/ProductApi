@@ -76,3 +76,9 @@
 
 ![categorydelete](https://user-images.githubusercontent.com/85956625/224957459-3bcfe8b2-f859-490a-b566-debce20911d2.PNG)
 
+➥ Wallet Connenction (MetaMask) 
+
+
+![wallet](https://user-images.githubusercontent.com/85956625/234195103-1fd9cf68-3c12-47e4-aff6-0804d04589a3.PNG)![Ekran Alıntısıw](https://user-images.githubusercontent.com/85956625/234195124-bd372f4a-783e-446a-933a-40dc56ce960f.PNG)
+
+
