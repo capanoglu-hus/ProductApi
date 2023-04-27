@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 import logo from './logo.png';
+import './UserHeader.css';
+import { BigNumber, ethers } from "ethers";
 export default function UserHeader() {
     
     const [userName, setUserName] = useState("");
@@ -16,6 +18,38 @@ export default function UserHeader() {
         sessionStorage.removeItem("userName");
         history.push("/");
     };
+    
+    const [account, setaccount] = useState(null);
+    const [balance, setbalance] = useState(BigNumber.from(0));
+    const [chainId , setChainId] = useState(Number);
+    const [transacCount , setTransacCount] = useState(Number);
+    const [provider, setprovider] = useState(null);
+
+    function connectWallet() {
+        if (!window.ethereum) {
+            alert("Install Metamask");
+            return;
+        }
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        setprovider(provider);
+        provider
+            .send("eth_requestAccounts", [])
+            .then((accounts) => setaccount(accounts[0]))
+            .catch((err) => console.log(err));
+        const signer = provider.getSigner();
+        signer.getAddress().then((address) => console.log(address));
+        console.log(signer);
+
+        signer.getBalance().then((balance) => setbalance(balance));
+        console.log(ethers.utils.formatEther(balance));
+
+        signer.getChainId().then((chainId) => setChainId(chainId) );
+        console.log(chainId);
+       
+        signer.getTransactionCount().then((transacCount) => setTransacCount(transacCount) );
+        console.log(transacCount);
+
+    }
 
     return (
 
@@ -63,13 +97,26 @@ export default function UserHeader() {
                             <li className="nav-item">
                                 <Link className="nav-link active" to="/Stock">Stock</Link>
                             </li>
-                             <li className="nav-item">
-                                <Link className="nav-link active" to="/MetaMask">MetaMask</Link>
-                            </li>
+                            
 
 
 
                         </ul>
+
+                         <button class="btn btn-warning" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+                            onClick={connectWallet}>
+
+                            <div class="dropdown">
+                                <span>  Wallet {account ? "Connected" : "connect"}{""}</span>
+                                <div class="dropdown-content">
+                                    <a> Address : {account} </a> <br></br>
+                                    <a> ChainId : {chainId} </a> <br></br>
+                                    <a> Transaction Count  : {transacCount} </a> <br></br>
+                                    <a> balance : {ethers.utils.formatEther(balance)} ETH </a>
+                                </div>
+                            </div>
+                        </button>
+
                         <button className="btn btn-dark" onClick={logout}>
                             <Link className="nav-link active" to="/Login">LOGOUT</Link>
 
