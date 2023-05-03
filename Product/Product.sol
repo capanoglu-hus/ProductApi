@@ -7,17 +7,17 @@ pragma solidity >=0.8.2 <0.9.0;
    * @custom:dev-run-script scripts/deploy_with_ethers.ts
    */
 contract Product {
-    address public owner ;
+    address payable public owner ;
 
       
 
     constructor() {
-        owner = msg.sender;
+        owner = payable(msg.sender);
     } 
 
     // product nesnesini oluşturduk
     struct Product{
-       uint256 ProductId;
+       uint256 productId;
        string name ;
        string description ;
        uint256 price ;
@@ -35,8 +35,8 @@ contract Product {
       _;
   }
     // Product ekleme 
-    function AddProduct(
-        uint256 _ProductId , 
+    function addProduct(
+        uint256 _productId , 
         string memory _name ,
         string memory _description ,
         uint256 _price,
@@ -45,7 +45,7 @@ contract Product {
         uint256 _status  
     ) public  OnlyOwner {
         Product memory product = Product(
-            _ProductId,
+            _productId,
             _name,
             _description,
             _price,
@@ -54,36 +54,55 @@ contract Product {
             _status
         );
 
-        products[_ProductId] = product;
+        products[_productId] = product;
        
     }
 
     // belirli alanları güncelleme 
     function setProduct (
-        uint256 _ProductId ,
+        uint256 _productId ,
         string memory _name , 
         string memory _description,
         uint256 _price,
         uint256 _status,
         bool _isApproved 
     ) public  OnlyOwner  {
-        Product storage updateProduct =  products[_ProductId];
+        Product storage updateProduct =  products[_productId];
         updateProduct.name = _name;
         updateProduct.description = _description;
         updateProduct.price = _price;
         updateProduct.status = _status ; 
         updateProduct.isApproved = _isApproved;
-        products[_ProductId];
+        products[_productId];
     }
 
     //id'ye göre silme işlemi 
     function deleteProduct(
-        uint256 _ProductId 
+        uint256 _productId 
     ) public OnlyOwner  {
        
-        delete products[_ProductId];
+        delete products[_productId];
+    }
+    
+       receive() external payable {
+        // kont. dışından ödeme yapabilir
+    }
+    
+    //satın alma 
+    function buyProduct(uint256 _productId) public payable {
+        Product memory product = products[_productId];
+
+        require(msg.value >= product.price);
+        require(product.status >  0 ); 
+        products[_productId].status = product.status - 1 ; // satış yapıldığında status 1 eksilmeli 
     }
 
+    // eth çekme 
+    function withdrawTips() public payable{
+        require(owner.send(address(this).balance));  // sadece kont. yazan eth çekebilir
+       
+    }
+    
        
    }
 
