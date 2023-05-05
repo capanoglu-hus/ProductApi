@@ -34,6 +34,36 @@ contract Product {
       require (msg.sender == owner  , "only the owner can ");
       _;
   }
+  
+  event productAdded (
+       uint256 _productId,
+       string _name ,
+       string _description ,
+       uint256 _price ,
+       bool _isApproved , 
+       uint256 _categoryId,
+       uint256 _status 
+    );
+    
+     event productUpdated (
+        uint256 _productId ,
+        string  _name , 
+        string  _description,
+        uint256 _price,
+        uint256 _status,
+        bool _isApproved   
+     );
+   
+     event productDeleted(
+          uint256 _productId 
+     );
+
+     event productSold (
+        address indexed _from, 
+        uint256 _productId , 
+        uint _value
+     );
+  
     // Product ekleme 
     function addProduct(
         uint256 _productId , 
@@ -56,6 +86,15 @@ contract Product {
 
         products[_productId] = product;
        
+         emit productAdded ( 
+        _productId, 
+        _name ,
+        _description ,
+        _price,
+        _isApproved , 
+        _categoryId,
+        _status  
+        );
     }
 
     // belirli alanları güncelleme 
@@ -74,6 +113,15 @@ contract Product {
         updateProduct.status = _status ; 
         updateProduct.isApproved = _isApproved;
         products[_productId];
+        
+         emit productUpdated(
+            _productId,
+            _name,
+            _description,
+            _price,
+            _status,
+            _isApproved
+        );
     }
 
     //id'ye göre silme işlemi 
@@ -82,6 +130,10 @@ contract Product {
     ) public OnlyOwner  {
        
         delete products[_productId];
+        
+         emit productDeleted(
+            _productId
+        );
     }
     
        receive() external payable {
@@ -95,6 +147,13 @@ contract Product {
         require(msg.value >= product.price);
         require(product.status >  0 ); 
         products[_productId].status = product.status - 1 ; // satış yapıldığında status 1 eksilmeli 
+        
+          emit productSold(
+            msg.sender,
+            _productId,
+            msg.value
+        );
+    
     }
 
     // eth çekme 
