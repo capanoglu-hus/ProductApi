@@ -82,5 +82,14 @@
 ![54645](https://user-images.githubusercontent.com/85956625/234776789-b9c226ab-1c8c-4e70-a11e-bb27e58068eb.png)
 ![wallet3 2](https://user-images.githubusercontent.com/85956625/234776819-bed21476-8d7a-428e-9f08-acce15636882.png)
 
+➥ Deploying the Product contract
+
+![deploy](https://user-images.githubusercontent.com/85956625/236753231-9bca68a6-4d31-477c-9c2b-7022a62489e9.PNG)
+![deploykanıt](https://user-images.githubusercontent.com/85956625/236753244-c50730ab-385b-4c15-bcf4-03f1c89ea684.PNG)
+
+➥ Reading from the Product contract
+
+![consol ekranı](https://user-images.githubusercontent.com/85956625/236753648-ae9a9778-88fd-440d-864b-32e63b4da61d.PNG)
+
 
 
