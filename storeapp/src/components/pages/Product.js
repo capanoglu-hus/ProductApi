@@ -1,11 +1,18 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Table from 'react-bootstrap/Table';
-
+import { useProductContract } from "../../hooks/useProductContract";
 import React from "react";
 
 function Product() {
   const [products, setProducts] = useState([]);
+  const productContract = useProductContract(); 
+  
+  const getProductContract = async  () =>{
+    const result = await productContract?.products(2);
+    console.log(result);
+  }
+  
   let tokenjwt = sessionStorage.getItem('tokenjwt');
 
   useEffect(() => {
@@ -33,6 +40,7 @@ function Product() {
       <br></br>
       <h1>Product Details</h1>
       <br></br>
+      <button onClick={getProductContract}> Get Products</button>
       <br></br>
       <Table striped bordered hover variant="dark">
         <thead>
