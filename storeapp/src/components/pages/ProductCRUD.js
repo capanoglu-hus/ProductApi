@@ -4,7 +4,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Table from 'react-bootstrap/Table';
-
+import { useProductContract } from "../../hooks/useProductContract";
+import {  ethers  } from "ethers";
 
 function ProductCRUD() {
 
@@ -18,7 +19,117 @@ function ProductCRUD() {
   const [products, setProducts] = useState([]);
   const [createUserId, setCreateUserId] = useState([]);
   const [updateUserId, setUpdateUserId] = useState([]);
+  
+   const contract = useProductContract();
 
+ 
+
+    async function web3Product(event){
+      event.preventDefault();
+      try{
+        const _productId =ethers.utils.formatUnits(productId , 0 ).toString();
+        const txResProduct= await contract?.products(_productId);
+        alert(txResProduct);
+      }
+      catch(err){
+        alert(err);
+      }
+    }
+
+   async function web3save(event) {
+    event.preventDefault();
+    try {
+      const _price = ethers.utils.parseEther(price).toString();
+      const _productId =ethers.utils.formatUnits(productId , 0 ).toString();
+      const _name = name ;
+      const _description = description;
+      const _status = status;
+      const _isApproved = isApproved;
+      const _categoryId = category_Id;
+      const txResponse = await contract?.addProduct(
+        _productId, 
+        _name ,
+        _description ,
+        _price,
+        _isApproved , 
+        _categoryId,
+        _status  
+        
+      );
+      const txReceipt = await txResponse.wait();
+      console.log(txReceipt);
+    }
+
+   catch (err) {
+    alert(err);
+  }
+
+  }
+
+  
+  async function web3delete(event) {
+    event.preventDefault();
+    try {
+      const _productId =ethers.utils.formatUnits(productId , 0 ).toString();
+      const txResponse = await contract.deleteProduct(
+        _productId,
+      );
+      const txReceipt = await txResponse.wait();
+      console.log(txReceipt);
+    }
+
+   catch (err) {
+    alert(err);
+  }
+
+  }
+
+  async function web3Update(event) {
+    event.preventDefault();
+    try {
+      const _price = ethers.utils.parseEther(price).toString();
+      const _productId =ethers.utils.formatUnits(productId , 0 ).toString();
+      const _name = name ;
+      const _description = description;
+      const _status = status;
+      const _isApproved = isApproved;
+      
+      const txResponse = await contract.setProduct(
+        _productId,
+        _name,
+        _description,
+        _price,
+        _status,
+        _isApproved
+       );
+      const txReceipt = await txResponse.wait();
+      console.log(txReceipt);
+    }
+
+   catch (err) {
+    alert(err);
+  }
+
+  }
+
+  async function web3Buy(event) {
+    event.preventDefault();
+    try {
+      const _productId =ethers.utils.formatUnits(productId , 0 ).toString();
+      const txResponse = await contract.buyProduct(
+        _productId,
+        
+       );
+      const txReceipt = await txResponse.wait();
+      console.log(txReceipt);
+    }
+
+   catch (err) {
+    alert(err);
+  }
+
+  }
+ 
 
   let tokenjwt = sessionStorage.getItem('tokenjwt');
 
@@ -265,6 +376,21 @@ function ProductCRUD() {
           <button className="btn btn-success mt-4" onClick={save}>
             SAVE
           </button> &nbsp;
+          <button className="btn btn-warning mt-4" onClick={web3save}>
+            web3 SAVE
+          </button> &nbsp;
+          <button className="btn btn-warning mt-4" onClick={web3delete}>
+            web3 delete
+          </button> &nbsp;
+          <button className="btn btn-warning mt-4" onClick={web3Update}>
+            web3 Updated
+          </button> &nbsp;
+          <button className="btn btn-warning mt-4" onClick={web3Buy}>
+            web3 Buy
+          </button> &nbsp;
+          <button className="btn btn-dark mt-4" onClick={web3Product}>
+            web3Product
+          </button>&nbsp;
           <button className="btn btn-primary mt-4" onClick={update}>
             UPDATE
           </button>
