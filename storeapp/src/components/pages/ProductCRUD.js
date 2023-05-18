@@ -115,11 +115,15 @@ function ProductCRUD() {
   async function web3Buy(event) {
     event.preventDefault();
     try {
-      const _productId =ethers.utils.formatUnits(productId , 0 ).toString();
-      const txResponse = await contract.buyProduct(
-        _productId,
-        
-       );
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const _productId = ethers.utils.formatUnits(productId, 0).toString();
+      const _value = ethers.utils.parseEther(price);
+
+
+      const txResponse = await contract.connect(signer).buyProduct(_productId, {
+        value: _value
+      });
       const txReceipt = await txResponse.wait();
       console.log(txReceipt);
     }
