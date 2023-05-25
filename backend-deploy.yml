@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stajdeneme-api
+  labels:
+    app: stajdeneme-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stajdeneme-api
+  template:
+    metadata:
+      labels:
+        app: stajdeneme-api
+    spec:
+      containers:
+      - name: stajdeneme-api
+        image: husniyecapan/stajdeneme-api:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 200m
+            memory: 200Mi
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: stajdeneme-api-service
+spec:
+ type: LoadBalancer
+ ports:
+ - port: 80
+ selector:
+   app: stajdeneme-api
+

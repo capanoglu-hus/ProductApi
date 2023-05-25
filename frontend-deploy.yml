@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stajdeneme-client
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: stajdeneme-client
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: stajdeneme-client
+        image: husniyecapan/stajdeneme-client:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://*:80
+        - name: backendUrl
+          value: http://stajdeneme-api
+  selector:
+    matchLabels:
+      app: stajdeneme-client
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stajdeneme-client
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: stajdeneme-client
