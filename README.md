@@ -92,4 +92,10 @@
 ![consol ekranı](https://user-images.githubusercontent.com/85956625/236753648-ae9a9778-88fd-440d-864b-32e63b4da61d.PNG)
 
 
+➥ DOCKER - KUBERNETES 
+
+![docker](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/b457cc0f-a123-4c52-a982-207aca88b3e7)
+![calıştıııı](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/d19f352a-58b5-454f-b3e6-489774058452)
+
+
 
