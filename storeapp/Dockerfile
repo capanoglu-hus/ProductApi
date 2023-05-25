@@ -1,12 +1,13 @@
-FROM node:18.13.0 AS storeapp
+FROM node:18.13.0 AS base
+WORKDIR /app
+EXPOSE 3000
 
-WORKDIR /storeapp
-
-COPY storeapp/package.json .
-
-COPY storeapp/package-lock.json .
-
+FROM node:18.13.0 AS install
+WORKDIR /src
+COPY package.json ./
+COPY package-lock.json ./
 RUN npm install
 COPY . .
 
-CMD ["npm","start"]
+
+CMD ["npm" , "start"]
