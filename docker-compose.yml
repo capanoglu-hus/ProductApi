@@ -1,24 +1,33 @@
 version: '3'
+
 services:
-  api:
+  web:
     build:
       context: .
       dockerfile: StoreApi/Dockerfile
-    depends_on:
-      - db
     ports:
       - "5000:80"
-    environment:
-      - ConnectionStrings__DataContext=User Id=postgres;Password=1234;Server=app_db;Port=5432;Database=SampleDbDriver; IntegratedSecurity=true;Pooling=true;
+    depends_on:
+      - db
   client:
     build:
       context: .
       dockerfile: storeapp/Dockerfile
     ports:
-      - "3000:3000"
+      - "3000:80"
+    depends_on:
+      - web
   db:
-    image: postgres
+    image: postgres:15
+    restart: always 
     environment:
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB = SampleDbDriver
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB = app_db
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres-db:/var/lib/postgresql/data
+  
+
+   
