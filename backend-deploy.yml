@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: stajdeneme-api
+  name: store-web
   labels:
-    app: stajdeneme-api
+    app: store-web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: stajdeneme-api
+      app: store-web
   template:
     metadata:
       labels:
-        app: stajdeneme-api
+        app: store-web
     spec:
       containers:
-      - name: stajdeneme-api
-        image: husniyecapan/stajdeneme-api:latest
+      - name: store-web
+        image: husniyecapan/store-web
         ports:
         - containerPort: 80
         resources:
@@ -32,11 +32,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: stajdeneme-api-service
+  name: store-web-service
 spec:
  type: LoadBalancer
  ports:
  - port: 80
  selector:
-   app: stajdeneme-api
+   app: store-web
 
