@@ -92,10 +92,17 @@
 ![consol ekranı](https://user-images.githubusercontent.com/85956625/236753648-ae9a9778-88fd-440d-864b-32e63b4da61d.PNG)
 
 
-➥ DOCKER - KUBERNETES 
+➥ DOCKER 
 
-![docker](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/b457cc0f-a123-4c52-a982-207aca88b3e7)
-![calıştıııı](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/d19f352a-58b5-454f-b3e6-489774058452)
+![docker](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/e04d2c05-949a-4dd0-90b5-bf9254b08da3)
+
+
+➥ KUBERNETES 
+
+![kuber22](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/d62dac06-19eb-4291-b3e3-5b5ce8a2d239)
+
+
+![kuber](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/16f1824e-3e73-4f0f-91bd-d62caecf1773)
 
 
 
