@@ -51,7 +51,11 @@ const Category = () => {
 
   const handleRemove = (categoryId) => {
     axios.delete("https://9907-212-125-3-118.ngrok-free.app/api/Category/DeleteCategory/" + categoryId, {
-    });
+    })
+     .catch(err => {
+        console.log(err)
+        alert(err)
+      });
     alert("Category deleted Successfully");
     console.log("denmee");
     setCategoryId("");
@@ -63,13 +67,7 @@ const Category = () => {
     getCategory();
   }
 
-  const handleCreate = () => {
-    setmodalProduct(true)
-  }
-
-  const handleCloseModal = () => {
-    setmodalProduct(false)
-  }
+  
 
   const dataPost = {
     name: name,
@@ -83,6 +81,9 @@ const Category = () => {
   const handleSave = () => {
     axios.post("https://9907-212-125-3-118.ngrok-free.app/api/Category/AddCategory", dataPost, {
 
+    }).catch(err => {
+      console.log(err)
+      alert(err)
     });
 
     alert("save success");
@@ -108,8 +109,11 @@ const Category = () => {
   }
 
   const handleUpdate = () => {
-    axios.patch("https://9907-212-125-3-118.ngrok-free.app/api/Category/UpdateCategory/" + categorys.find((u) => u.categoryId === categoryId).categoryId || categoryId, dataUpdated, {
+    axios.patch("https://9907-212-125-3-118.ngrok-free.app/api/Category/UpdateCategory/" + categoryId , dataUpdated, {
 
+    }).catch(err => {
+      console.log(err)
+      alert(err)
     });
     alert("Category Updated");
     setCategoryId();
@@ -132,29 +136,49 @@ const Category = () => {
     setCreateUserId("");
   }
 
-  const handleEdit = (categorys) => {
+  const handleEdit = (item) => {
+    setViisble(true)
+    setCategoryId(item.categoryId + "");
+    setName(item.name);
+    setDescription(item.description);
+    setStatus(item.status + "");
+    setUpdateUserId(item.updateUserId + "");
+    setCreateUserId(item.createUserId + "");
 
-    setCategoryId(categorys.categoryId);
-    setName(categorys.name);
-    setDescription(categorys.description);
-    setStatus(categorys.status);
-    setUpdateUserId(categorys.updateUserId);
-    setCreateUserId(categorys.createUserId);
-    setmodalProduct(true);
+  }
+  const handleVisibleModal = () => {
+    setViisble(!visible)
+   
   }
 
   return (
     <SafeAreaView>
+      <View style={[styles.rowBetween, { paddingHorizontal: 10 }]}>
+        <TouchableOpacity
+
+        >
+          <Text style={styles.textButton}></Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={handleVisibleModal}
+          style={styles.btnContainer}
+        >
+          <Text style={styles.txtClose}>New CATEGORY</Text>
+        </TouchableOpacity>
+      </View>
       <Modal
-        visible={modalProduct}
+        animationType="slide"
+        visible={visible}
       >
         <SafeAreaView>
-          <View style={[styles.rowBetween, { paddingHorizontal: 10 }]}>
-            <Text style={styles.txtClose} >NEW PRODUCT</Text>
-            <TouchableOpacity onPress={handleCloseModal}>
-              <Text style={styles.txtClose}>Close</Text>
-            </TouchableOpacity>
-          </View>
+
+          <TouchableOpacity
+            onPress={handleVisibleModal}
+          >
+            <Text style={styles.txtClose}>
+              Close
+            </Text>
+          </TouchableOpacity>
           <View style={{ paddingHorizontal: 10 }}>
             <Text> category ID</Text>
             <TextInput
@@ -224,13 +248,7 @@ const Category = () => {
         </SafeAreaView>
       </Modal>
 
-      <View style={styles.rowBetween}>
-
-        <TouchableOpacity style={{ padding: 15, color: "green" }} onPress={handleCreate}>
-          <Text style={{ color: "green" }  } > NEW </Text>
-        </TouchableOpacity>
-
-      </View>
+      
 
       <ScrollView
         contentContainerStyle={{
