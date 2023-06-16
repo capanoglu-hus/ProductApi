@@ -2,19 +2,26 @@
 (React-Native/Expo/NETCoreWebApi)
 
 ## LOGIN / REGISTER PAGE 
-#### 
+
+<img src="https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/6aa4b1b1-f046-4370-ad0e-66bbd7f54e90" alt="alt text" width="160" height="300">
 
 
-<img src="https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/da792649-41ee-4d20-92b8-ce321db29e3e" alt="alt text" width="200" height="300">
+<img src="https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/029ee250-ad22-4269-add7-1e5af9c256c7" alt="alt text" width="160" height="300">
 
-<img src="https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/fc57339e-4e0c-4c1f-be6c-8a38a4842ec9" alt="alt text" width="200" height="300">
-
-
-
+## HOME PAGE 
+<img src="https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/a30f620c-f582-4291-9572-113688ba45b4" alt="alt text" width="160" height="300">
 
 
-## CATEGORY PAGE
-<img src="https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/b2bacfa7-03ca-44d1-8269-f5db2c47fa6a" alt="alt text" width="180" height="300">
 
-<img src="https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/2d08b537-d6cd-449b-a109-6248638c5e61" alt="alt text" width="180" height="300">
+## CATEGORY GET PAGE
+<img src="https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/b3ec5ec8-3002-4ead-ba4b-41eee3a08c60" alt="alt text" width="160" height="300">
+
+## CATEGORY ADD PAGE
+<img src="https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/942c6036-589f-4045-a567-9beee3ab367a" alt="alt text" width="160" height="300">
+
+## CATEGORY EDIT PAGE
+<img src="https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/a7b37aa2-f872-46cf-941c-5ec13a5273de" alt="alt text" width="160" height="300">
+
+
+
 
