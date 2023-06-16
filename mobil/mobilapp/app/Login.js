@@ -21,6 +21,7 @@ export default function Login() {
 
     const handleLogin = () => {
         console.log("11");
+         if (validate()) {
         let inputobj = {
             "usr": usr,
             "username": userName,
@@ -36,16 +37,30 @@ export default function Login() {
         }).then(resp => {
 
             console.log(resp)
-          /*  AsyncStorage.setItem('UserId', resp.usr)
+             alert('Success');
+           AsyncStorage.setItem('UserId', resp.usr)
             AsyncStorage.setItem('tokenjwt', resp.tokenjwt);
-            AsyncStorage.setItem('username', userName)*/
-            console.log(userName)
-            alert("successs");
+            AsyncStorage.setItem('username', userName)
+            
+                console.log(resp.tokenjwt)
+                navigation.navigate('Home', { userName })
 
         }).catch((err) => {
             alert('Login Failed due to :' + err.message);
         });
-
+         }
+    }
+     const validate = () => {
+        let result = true;
+        if (userName === '' || userName === null) {
+            result = false;
+            alert('Please Enter Username');
+        }
+        if (password === '' || password === null) {
+            result = false;
+            alert('Please Enter Password');
+        }
+        return result;
     }
 
 
@@ -74,6 +89,7 @@ export default function Login() {
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
                 <Text style={styles.text}>Login</Text>
             </TouchableOpacity>
+             <Button title="REGİSTER" style={styles.button} onPress={() => navigation.navigate('Register')} />
 
         </View>
     );
