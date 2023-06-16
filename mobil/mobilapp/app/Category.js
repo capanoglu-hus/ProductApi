@@ -16,7 +16,8 @@ import {
 } from "react-native";
 const Category = () => {
 
-  const [modalProduct, setmodalProduct] = useState(false);
+  
+  const [visible, setViisble] = useState(false);
   const [categorys, setCategorys] = useState([]);
   const [categoryId, setCategoryId] = useState("");
   const [name, setName] = useState("");
