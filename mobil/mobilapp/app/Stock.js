@@ -1,6 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from 'axios'
+
 import {
   Text,
   SafeAreaView,
@@ -10,15 +11,11 @@ import {
   TouchableOpacity,
   Modal,
   TextInput,
-  FlatList,
-  AntDesign,
-  StatusBar,Surface,
-  Title
 } from "react-native";
 
 const Stock = () =>   {
 
-  const [modalProduct, setmodalProduct] = useState(false);
+ 
 
   const [stockId, setStockId] = useState();
   const [product_id, setProduct_id] = useState(0);
@@ -28,8 +25,7 @@ const Stock = () =>   {
   const [updateUserId, setUpdateUserId] = useState([]);
 
   const [stocks, setStocks] = useState([]);
-  const [visible, setVisible] = useState(false);
-
+  const [visible,setViisble] = useState(false);
 
   const dataPost = {
 
@@ -51,7 +47,7 @@ const Stock = () =>   {
 
 
   const getStock = () => {
-    fetch("https://9907-212-125-3-118.ngrok-free.app/api/Stock/GetStock", {
+    fetch("https://31e0-188-119-43-231.ngrok-free.app/api/Stock/GetStock", {
     method: "GET",
     headers: {
       //     Accept: 'application/json',
@@ -65,6 +61,7 @@ const Stock = () =>   {
     setStocks(stocks)
   }).catch(err => {
     console.log(err)
+    alert(err)
   })
 }
 
@@ -73,7 +70,11 @@ const Stock = () =>   {
   }, [])
 
   const handleRemove = (stockId) => {
-    axios.delete("https://65b1-212-125-3-118.ngrok-free.app/api/Stock/AddStock" + stockId, {
+    axios.delete("https://31e0-188-119-43-231.ngrok-free.app/api/Stock/DeleteStock" + stockId, {
+  })
+  .catch(err => {
+    console.log(err)
+    alert(err)
   });
   alert("Stock deleted Successfully");
    
@@ -92,8 +93,11 @@ const Stock = () =>   {
  
 
    const handleSave = () => {
-    axios.post("https://65b1-212-125-3-118.ngrok-free.app/api/Stock/AddCategory", dataPost, {
+    axios.post("https://31e0-188-119-43-231.ngrok-free.app/api/Stock/AddStock", dataPost, {
 
+    }).catch(err => {
+      console.log(err)
+      alert(err)
     });
     alert("Stock Registation Successfully");
 
@@ -113,7 +117,10 @@ const Stock = () =>   {
 
 
   const handleUpdate = () => {
-    axios.patch("https://65b1-212-125-3-118.ngrok-free.app/api/Stock/UpdateStock/" + stocks.find((u) => u.stockId === stockId).stockId || stockId, dataUpdated, {
+    axios.patch("https://31e0-188-119-43-231.ngrok-free.app/api/Stock/UpdateStock/" +  stockId, dataUpdated, {
+  }).catch(err => {
+    console.log(err)
+    alert(err)
   });
   alert("stock Updated");
   setStockId();
@@ -134,40 +141,54 @@ const Stock = () =>   {
     setUpdateUserId("");
     setCreateUserId("");
   }
-  const handleCreate = () => {
-    setmodalProduct(true)
-  }
+ 
 
-  const handleCloseModal = () => {
-    setmodalProduct(false)
+  const handleEdit = (item) => {
+    setViisble(true)
+    setStockId(item.stockId+"");
+    setProduct_id(item.product_id+"");
+    setQuantity(item.quantity+"");
+    setStatus(item.status);
+    setUpdateUserId(item.updateUserId+"");
+    setCreateUserId(item.createUserId+"");
+   
   }
+  const handleVisibleModal = () => {
+    setViisble(!visible)
 
-  const handleEdit = (stocks) => {
-
-    setStockId(stocks.stockId);
-    setProduct_id(stocks.product_id);
-    setQuantity(stocks.quantity);
-    setStatus(stocks.status);
-    setUpdateUserId(stocks.updateUserId);
-    setCreateUserId(stocks.createUserId);
-    setmodalProduct(true);
-  }
+}
 
 
   return (
     <SafeAreaView>
+    <View style={[styles.rowBetween, { paddingHorizontal: 10 }]}>
+      <TouchableOpacity
+
+      >
+        <Text style={styles.textButton}></Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={handleVisibleModal}
+        style={styles.btnContainer}
+      >
+        <Text style={styles.txtClose}>New STOCK</Text>
+      </TouchableOpacity>
+    </View>
     <Modal
-      visible={modalProduct}
+      animationType="slide"
+      visible={visible}
     >
       <SafeAreaView>
-        <View style={[styles.rowBetween, { paddingHorizontal: 10 }]}>
-          <Text style={styles.txtClose} >NEW PRODUCT</Text>
-          <TouchableOpacity onPress={handleCloseModal}>
-            <Text style={styles.txtClose}>Close</Text>
-          </TouchableOpacity>
-        </View>
+
+        <TouchableOpacity
+          onPress={handleVisibleModal}
+        >
+          <Text style={styles.txtClose}>
+            Close
+          </Text>
+        </TouchableOpacity>
         <View style={{ paddingHorizontal: 10 }}>
-          <Text> STOCK ID</Text>
+        <Text> STOCK ID </Text>
           <TextInput
             style={styles.textInput}
             placeholder={"stockId"}
@@ -227,13 +248,7 @@ const Stock = () =>   {
       </SafeAreaView>
     </Modal>
 
-    <View style={styles.rowBetween}>
-
-      <TouchableOpacity style={{ padding: 15, color: "blue" }} onPress={handleCreate}>
-        <Text style={{ color: "green" }} > NEW </Text>
-      </TouchableOpacity>
-
-    </View>
+    
 
     <ScrollView
       contentContainerStyle={{
@@ -254,14 +269,14 @@ const Stock = () =>   {
             <Text style={styles.txtNormal} > UpdateUserId : {item.updateUserId}</Text>
             <View style={styles.rowBetween}>
 
-              <TouchableOpacity onPress={() => handleEdit(item.stockId)} >
+              <TouchableOpacity onPress={() => handleEdit(item)} >
                 <Text style={styles.txtedit}
                 >EDİT</Text>
                 
               </TouchableOpacity>
               <TouchableOpacity onPress={() => handleRemove(item.stockId)}>
                 <Text style={styles.txtdelete}>DELETE</Text>
-               
+              
               </TouchableOpacity>
             </View>
 
