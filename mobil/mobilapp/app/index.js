@@ -1,52 +1,50 @@
-import { StyleSheet, Text, View } from "react-native";
-import { Link } from 'expo-router';
+import * as React from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 
-export default function Page() {
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Home from './Home';
+import Login from './Login';
+import Category from './Category';
+import Product from './Product';
+import Stock from './Stock';
+import Register from './Register';
+
+const Stack = createNativeStackNavigator();
+const App = () => {
+ 
   return (
-    <View style={styles.container}>
-      <View style={styles.main}>
-        
-        <Text style={styles.title}> WELCOME WORLD</Text>
-        <Text style={styles.subtitle}> first page </Text>
-        <Link href="/Login" style={styles.link} > Login </Link>
-        <Link href="/Register" style={styles.link} > Register </Link>
-        <Link href="/Category" style={styles.link} > Category </Link>
-        <Link href="/Product" style={styles.link} > Product </Link>
-        <Link href="/Stock" style={styles.link} > Stock </Link>
-        
-      </View>
-    </View>
+    <NavigationContainer independent={true}>
+      <Stack.Navigator initialRouteName='Login'>
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          />
+          
+        <Stack.Screen
+          name="Home"
+          component={Home}
+        />
+        <Stack.Screen
+          name="Category"
+          component={Category}
+        />
+        <Stack.Screen
+          name="Product"
+          component={Product}
+        />
+        <Stack.Screen
+          name="Stock"
+          component={Stock}
+        />
+        <Stack.Screen
+          name="Register"
+          component={Register}
+        />
+
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  main: {
-    flex: 1,
-    justifyContent: 'center',
-    maxWidth: 960,
-    marginHorizontal:'auto'
-  },
-  title:{
-    fontSize:48,
-    fontWeight:'bold',
-  },
-  subtitle:{
-    fontSize: 36,
-    color:'#38434D'
-  },
-  link:{
-    fontSize:20,
-    marginVertical:10,
-    fontWeight:'bold',
-    textDecorationStyle:'underline',
-  },
-
-
-
-});
+export default App;
