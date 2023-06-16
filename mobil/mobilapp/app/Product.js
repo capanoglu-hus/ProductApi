@@ -14,7 +14,7 @@ import {
 
 const Product = () => {
 
-  const [modalProduct, setmodalProduct] = useState(false);
+ const [visible, setViisble] = useState(false);
 
 
   const [productId, setProductId] = useState("");
@@ -58,7 +58,11 @@ const Product = () => {
     axios.delete("https://9907-212-125-3-118.ngrok-free.app/api/Product/DeleteProduct/" + productId , {
 
 
-    });
+    })
+    .catch(err => {
+        console.log(err)
+        alert(err)
+      });
     alert("Product deleted Successfully");
     console.log("denmee");
     setProductId("");
@@ -73,9 +77,7 @@ const Product = () => {
     getProduct();
   }
 
-  const handleCreate = () => {
-    setmodalProduct(true)
-  }
+
   const dataPost = {
 
     name: name,
@@ -101,14 +103,14 @@ const Product = () => {
 
   }
 
-  const handleCloseModal = () => {
-    setmodalProduct(false)
-  }
-
+  
   const handleSave = () => {
     axios.post("https://9907-212-125-3-118.ngrok-free.app/api/Product/AddProduct", dataPost, {
 
-    });
+    }).catch(err => {
+        console.log(err)
+        alert(err)
+      });
     alert("product Registation Successfully");
     setName("");
     setDescription("");
@@ -126,9 +128,12 @@ const Product = () => {
 
 
   const handleUpdate = () => {
-    fetch("https://9907-212-125-3-118.ngrok-free.app/api/Product/UpdateProduct/" + products.find((u) => u.productId === productId).productId || productId, dataUpdated, {
+    fetch("https://9907-212-125-3-118.ngrok-free.app/api/Product/UpdateProduct/" +  productId, dataUpdated, {
 
-    });
+    }).catch(err => {
+        console.log(err)
+        alert(err)
+      });
     alert("Product Update Successfully");
     setProductId();
     setName();
@@ -157,34 +162,58 @@ const Product = () => {
     setCreateUserId("");
   }
 
-  const handleEdit = (products) => {
+ 
+  const handleEdit = (pro) => {
+    setViisble(true)
+    setProductId(pro.productId+"");
+    setName(pro.name);
+    setDescription(pro.description);
+    setPrice(pro.price+"");
+    setStatus(pro.status+"");
+    setIsApproved(pro.isApproved);
+    setCategory_Id(pro.category_Id+"");
+    setUpdateUserId(pro.updateUserId+"");
+    setCreateUserId(pro.createUserId+"");
 
-    setProductId(products.productId);
-    setName(products.name);
-    setDescription(products.description);
-    setPrice(products.price);
-    setStatus(products.status);
-    setIsApproved(products.isApproved);
-    setCategory_Id(products.category_Id);
-    setUpdateUserId(products.updateUserId);
-    setCreateUserId(products.createUserId);
-    setmodalProduct(true);
+  }
+
+  const handleVisibleModal = () => {
+    setViisble(!visible)
+
   }
 
 
   return (
-    <SafeAreaView>
+   <SafeAreaView>
+      <View style={[styles.rowBetween, { paddingHorizontal: 15}]}>
+      <TouchableOpacity
+        
+        >
+          <Text style={styles.textButton}></Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={handleVisibleModal}
+          style={styles.btnContainer}
+        >
+          <Text style={styles.txtClose}>New product</Text>
+        </TouchableOpacity>
+
+
+      </View>
       <Modal
-        visible={modalProduct}
+        animationType="slide"
+        visible={visible}
       >
         <SafeAreaView>
-          <View style={[styles.rowBetween, { paddingHorizontal: 10 }]}>
-            <Text style={styles.txtClose} >NEW PRODUCT</Text>
-            <TouchableOpacity onPress={handleCloseModal}>
-              <Text style={styles.txtClose}>Close</Text>
-            </TouchableOpacity>
-          </View>
           <View style={{ paddingHorizontal: 10 }}>
+            <TouchableOpacity
+              onPress={handleVisibleModal}
+             
+            >
+              <Text style={styles.txtClose}>
+                Close
+              </Text>
+            </TouchableOpacity>
             <Text> Product ID</Text>
             <TextInput
               style={styles.textInput}
@@ -269,13 +298,7 @@ const Product = () => {
           </View>
         </SafeAreaView>
       </Modal>
-
-      <View style={styles.rowBetween}>
-        <TouchableOpacity style={{ padding: 15, color: "blue" }} onPress={handleCreate}>
-          <Text style={{ color: "blue" }} >NEW</Text>
-        </TouchableOpacity>
-
-      </View>
+>
 
       <ScrollView
         contentContainerStyle={{
@@ -305,10 +328,10 @@ const Product = () => {
              
               
               <View style={styles.rowBetween}>
-                <TouchableOpacity onPress={() => handleRemove}>
+                <TouchableOpacity onPress={() => handleRemove(pro.productId)}>
                   <Text style={styles.txtdelete}> DELETE </Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => handleEdit}>
+                <TouchableOpacity onPress={() => handleEdit(pro)}>
                   <Text style={styles.txtedit}>EDİT</Text>
                 </TouchableOpacity>
               </View>
