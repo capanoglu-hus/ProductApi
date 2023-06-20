@@ -1,6 +1,7 @@
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   Text,
   SafeAreaView,
@@ -35,12 +36,14 @@ const Product = () => {
     getProduct();
   }, [])
 
-  const getProduct = () => {
+  const getProduct = async () => {
+     const jsonValue = await AsyncStorage.getItem('tokenjwt')
+    const tokenjwt = JSON.parse(JSON.stringify(jsonValue))
+    console.log(tokenjwt);
     fetch("https://9907-212-125-3-118.ngrok-free.app/api/Product/GetProduct", {
       method: "GET",
-      headers: {
-        //     Accept: 'application/json',
-        //    'Content-Type': 'application/json',
+       headers: {
+        "Authorization": "bearer " + tokenjwt
       }
     }).then(res => {
       return res.json();
@@ -54,9 +57,14 @@ const Product = () => {
   }
 
 
-  const handleRemove = (productId) => {
+  const handleRemove = async (productId) => {
+     const jsonValue = await AsyncStorage.getItem('tokenjwt')
+    const tokenjwt = JSON.parse(JSON.stringify(jsonValue))
+   
     axios.delete("https://9907-212-125-3-118.ngrok-free.app/api/Product/DeleteProduct/" + productId , {
-
+       headers: {
+        "Authorization": "bearer " + tokenjwt
+      }
 
     })
     .catch(err => {
@@ -104,8 +112,13 @@ const Product = () => {
   }
 
   
-  const handleSave = () => {
+  const handleSave = async () => {
+     const jsonValue = await AsyncStorage.getItem('tokenjwt')
+    const tokenjwt = JSON.parse(JSON.stringify(jsonValue))
     axios.post("https://9907-212-125-3-118.ngrok-free.app/api/Product/AddProduct", dataPost, {
+      headers: {
+        "Authorization": "bearer " + tokenjwt
+      }
 
     }).catch(err => {
         console.log(err)
@@ -127,9 +140,14 @@ const Product = () => {
   }
 
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
+     const jsonValue = await AsyncStorage.getItem('tokenjwt')
+    const tokenjwt = JSON.parse(JSON.stringify(jsonValue))
+   
     fetch("https://9907-212-125-3-118.ngrok-free.app/api/Product/UpdateProduct/" +  productId, dataUpdated, {
-
+       headers: {
+        "Authorization": "bearer " + tokenjwt
+      }
     }).catch(err => {
         console.log(err)
         alert(err)
