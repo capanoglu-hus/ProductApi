@@ -4,7 +4,11 @@ import React, {useContext} from 'react';
 
 
 const Home = ({navigation , route}) => {
-
+const logout = async () => {
+    await AsyncStorage.removeItem("tokenjwt")
+    alert("logout success")
+    navigation.navigate("Login")
+  }
 
   return (
     <View style={styles.container}>
@@ -20,6 +24,9 @@ const Home = ({navigation , route}) => {
         <Button title="Product" style={styles.button} onPress={() => navigation.navigate("Product")}/>
         <Button title="Stock" style={styles.button} onPress={() => navigation.navigate("Stock")}/>
         
+      </View>
+   <View style={styles.main}>
+      <Button title="LOGOUT" style={styles.button} onPress={logout}/>
       </View>
     </View>
   );
