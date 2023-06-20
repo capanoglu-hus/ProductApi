@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios'
 
 import {
@@ -46,12 +47,14 @@ const Stock = () =>   {
   }
 
 
-  const getStock = () => {
+  const getStock = async() => {
+     const jsonValue = await AsyncStorage.getItem('tokenjwt')
+    const tokenjwt = JSON.parse(JSON.stringify(jsonValue))
+    console.log(tokenjwt);
     fetch("https://31e0-188-119-43-231.ngrok-free.app/api/Stock/GetStock", {
     method: "GET",
-    headers: {
-      //     Accept: 'application/json',
-      //    'Content-Type': 'application/json',
+      headers: {
+      "Authorization": "bearer " + tokenjwt
     }
   }).then(res => {
     return res.json();
@@ -69,8 +72,13 @@ const Stock = () =>   {
     getStock();
   }, [])
 
-  const handleRemove = (stockId) => {
-    axios.delete("https://31e0-188-119-43-231.ngrok-free.app/api/Stock/DeleteStock" + stockId, {
+  const handleRemove = async(stockId) => {
+      const jsonValue = await AsyncStorage.getItem('tokenjwt')
+    const tokenjwt = JSON.parse(JSON.stringify(jsonValue))
+    axios.delete("https://31e0-188-119-43-231.ngrok-free.app/api/Stock/DeleteStock/" + stockId, {
+       headers: {
+        "Authorization": "bearer " + tokenjwt
+      }
   })
   .catch(err => {
     console.log(err)
@@ -92,9 +100,13 @@ const Stock = () =>   {
   }
  
 
-   const handleSave = () => {
+   const handleSave = async () => {
+      const jsonValue = await AsyncStorage.getItem('tokenjwt')
+    const tokenjwt = JSON.parse(JSON.stringify(jsonValue))
     axios.post("https://31e0-188-119-43-231.ngrok-free.app/api/Stock/AddStock", dataPost, {
-
+    headers: {
+        "Authorization": "bearer " + tokenjwt
+      }
     }).catch(err => {
       console.log(err)
       alert(err)
@@ -116,8 +128,13 @@ const Stock = () =>   {
 
 
 
-  const handleUpdate = () => {
+  const handleUpdate = async() => {
+    const jsonValue = await AsyncStorage.getItem('tokenjwt')
+    const tokenjwt = JSON.parse(JSON.stringify(jsonValue))
     axios.patch("https://31e0-188-119-43-231.ngrok-free.app/api/Stock/UpdateStock/" +  stockId, dataUpdated, {
+       headers: {
+        "Authorization": "bearer " + tokenjwt
+      }
   }).catch(err => {
     console.log(err)
     alert(err)
