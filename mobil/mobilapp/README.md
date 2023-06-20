@@ -22,6 +22,13 @@
 ## CATEGORY EDIT PAGE
 <img src="https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/a7b37aa2-f872-46cf-941c-5ec13a5273de" alt="alt text" width="160" height="300">
 
+## JWT
+
+![token](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/cae9a690-ffa5-4e22-891b-33fa38218916)
+
+## ROLES 
+
+![role](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/f0a6dbb6-210e-4485-b188-99451dab2fe5)
 
 
 
