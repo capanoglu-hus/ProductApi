@@ -32,12 +32,14 @@ const Category = () => {
     getCategory();
   }, [])
 
-  const getCategory = () => {
+  const getCategory = async() => {
+   const jsonValue = await AsyncStorage.getItem('tokenjwt')
+    const tokenjwt = JSON.parse(JSON.stringify(jsonValue))
+    console.log(tokenjwt);
     fetch("https://9907-212-125-3-118.ngrok-free.app/api/Category/GetCategory", {
       method: "GET",
       headers: {
-        //     Accept: 'application/json',
-        //    'Content-Type': 'application/json',
+        "Authorization": "bearer " + tokenjwt
       }
     }).then(res => {
       return res.json();
@@ -50,8 +52,14 @@ const Category = () => {
     })
   }
 
-  const handleRemove = (categoryId) => {
+  const handleRemove = async (categoryId) => {
+      const jsonValue = await AsyncStorage.getItem('tokenjwt')
+    const tokenjwt = JSON.parse(JSON.stringify(jsonValue))
+
     axios.delete("https://9907-212-125-3-118.ngrok-free.app/api/Category/DeleteCategory/" + categoryId, {
+     headers: {
+        "Authorization": "bearer " + tokenjwt
+      }
     })
      .catch(err => {
         console.log(err)
@@ -79,9 +87,13 @@ const Category = () => {
 
   }
 
-  const handleSave = () => {
+  const handleSave = async () => {
+     const jsonValue = await AsyncStorage.getItem('tokenjwt')
+    const tokenjwt = JSON.parse(JSON.stringify(jsonValue))
     axios.post("https://9907-212-125-3-118.ngrok-free.app/api/Category/AddCategory", dataPost, {
-
+     headers: {
+        "Authorization": "bearer " + tokenjwt
+      }
     }).catch(err => {
       console.log(err)
       alert(err)
@@ -110,8 +122,12 @@ const Category = () => {
   }
 
   const handleUpdate = () => {
+      const jsonValue = await AsyncStorage.getItem('tokenjwt')
+    const tokenjwt = JSON.parse(JSON.stringify(jsonValue))
     axios.patch("https://9907-212-125-3-118.ngrok-free.app/api/Category/UpdateCategory/" + categoryId , dataUpdated, {
-
+     headers: {
+        "Authorization": "bearer " + tokenjwt
+      }
     }).catch(err => {
       console.log(err)
       alert(err)
