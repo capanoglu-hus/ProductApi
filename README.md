@@ -59,27 +59,31 @@
 
   ➜ Store Homepage 
 
+![homepage](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/7c377748-6b8d-4071-9185-a8a47e68fe4b)
+
 
 
   ➜  User Page 
 
+![user](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/bcf18d81-ecd5-4cc7-91a1-e4910cf027d8)
 
 
 
   ➜ Admin Page  
 
+![adminpage](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/3b780a60-bc82-4133-99a1-ef5d01e9392b)
 
 
   ➜ Product add  Admin page  
 
 ![ıdolmadanproductadd](https://user-images.githubusercontent.com/85956625/226591306-549761fe-2c6d-475e-9d5f-5eeb71c9bf33.PNG)
 
-  ➜ CATEGORY UPDATED ADMİN PAGE 
+  ➜ Categeory updated Admin page 
 
 ![updateddd](https://user-images.githubusercontent.com/85956625/226596901-0162450c-cee6-472a-a218-50996665c961.PNG)
 
 
-    ➜ CATEGORY DELETE ADMİN PAGE 
+➜ Category delete Admin page   
 
 
 ![categorydelete](https://user-images.githubusercontent.com/85956625/224957459-3bcfe8b2-f859-490a-b566-debce20911d2.PNG)
@@ -90,12 +94,21 @@
 
 
 ![54645](https://user-images.githubusercontent.com/85956625/234776789-b9c226ab-1c8c-4e70-a11e-bb27e58068eb.png)
+
 ![wallet3 2](https://user-images.githubusercontent.com/85956625/234776819-bed21476-8d7a-428e-9f08-acce15636882.png)
 
  ####   ➤  Deploying the Product contract 
+ 
+ ➜ See product folder
 
 ![deploy](https://user-images.githubusercontent.com/85956625/236753231-9bca68a6-4d31-477c-9c2b-7022a62489e9.PNG)
+
 ![deploykanıt](https://user-images.githubusercontent.com/85956625/236753244-c50730ab-385b-4c15-bcf4-03f1c89ea684.PNG)
+
+➥ web3 in app
+
+![web3](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/36cb7221-f6d4-4545-a3bd-7cbc9c4e51ed)
+
 
 ➥ Reading from the Product contract
 
@@ -124,6 +137,8 @@
 ![kuber](https://github.com/capanoglu-hus/StoreWebApi/assets/85956625/16f1824e-3e73-4f0f-91bd-d62caecf1773)
 
 ####   ➤  Mobil App 
+➜ See mobil folder
+
   ➜ React-Native 
   
   ➜ Expo Go 
