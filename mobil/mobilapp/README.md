@@ -1,5 +1,6 @@
 # MOBIL STOREAPP 
-(React-Native/Expo/NETCoreWebApi)
+( ReactNative - Expo - .NETCoreWebApi - Ngrok)
+
 
 ## LOGIN / REGISTER PAGE 
 
