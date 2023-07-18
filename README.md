@@ -7,7 +7,9 @@
 ##### (.Net Core Web Api  - PostgreSQL - React18 - Solidity - ReactNative - Docker - Kubernetes )
 
 
- ####   ➤ DATABASE 
+ ####   ➤ Database 
+
+ ➜ PostgreSQL 14
 
 ![storedb (1)](https://user-images.githubusercontent.com/85956625/224958859-4b599be2-80db-4b48-9d42-aa4ca2eacb04.png)
 
@@ -35,7 +37,7 @@
 
         
       
-   ➜ Roles : 
+   ➜ Roles : Admin , User
 
     
  ####   ➤  React   
@@ -83,7 +85,7 @@
 ![updateddd](https://user-images.githubusercontent.com/85956625/226596901-0162450c-cee6-472a-a218-50996665c961.PNG)
 
 
-➜ Category delete Admin page   
+  ➜ Category delete Admin page   
 
 
 ![categorydelete](https://user-images.githubusercontent.com/85956625/224957459-3bcfe8b2-f859-490a-b566-debce20911d2.PNG)
@@ -97,7 +99,7 @@
 
 ![wallet3 2](https://user-images.githubusercontent.com/85956625/234776819-bed21476-8d7a-428e-9f08-acce15636882.png)
 
- ####   ➤  Deploying the Product contract 
+ ####   ➤  Deploying the Product contract and in app 
  
  ➜ See product folder
 
